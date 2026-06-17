@@ -1,4 +1,4 @@
-# GhostSSH 
+⚡️GhostSSH 
 
 A lightweight SSH alias manager written in Bash.
 
@@ -22,7 +22,7 @@ GhostSSH lets you save SSH connections with aliases and connect to them instantl
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/GhostSSH.git
+git clone https://github.com/honeydev-404/GhostSSH.git
 cd GhostSSH
 ```
 
