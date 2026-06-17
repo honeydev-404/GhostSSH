@@ -1,0 +1,181 @@
+#!/bin/bash
+
+RED="\033[31m"
+YELLOW=$'\e[33m'
+RESET="\033[0m"
+
+CONFIG_DIR="$HOME/.ghost"
+CONFIG_FILE="$CONFIG_DIR/servers.conf"
+
+mkdir -p "$CONFIG_DIR"
+touch "$CONFIG_FILE"
+
+if [ $# -eq 0 ]
+then
+    echo "____________________USAGE______________________"
+    printf "%-25s %s\n" "ghost add"            "Add a new server"
+    printf "%-25s %s\n" "ghost list"           "Show saved servers"
+    printf "%-25s %s\n" "ghost <alias>"        "Connect to a server"
+    printf "%-25s %s\n" "ghost remove <alias>" "Planned for v1.1"
+    printf "%-25s %s\n" "ghost edit <alias>"   "Planned for v1.1"
+    exit
+fi 
+
+#LIST COMMAND
+if [ "$1" = "-l" ] || [ "$1" = "list" ]
+then 
+    
+    printf "%-12s %-12s %-30s %-6s\n" "Alias" "Username" "Host" "Port"
+    echo "--------------------------------------------------------------"
+    
+    while IFS="|" read -r Alias Username Host Port
+    do
+        printf "%-12s %-12s %-30s %-4s\n" "$Alias" "$Username" "$Host" "$Port"
+    done < "$CONFIG_FILE"
+    exit
+fi
+
+#ADD COMMAND
+if [ "$1" != "add" ] 
+then
+
+server_search="$1"
+
+if [ -n "$server_search" ]
+then
+    server_data=$(grep "^$server_search|" "$CONFIG_FILE")
+
+    if [ -z "$server_data" ]
+    then
+        echo -e "${RED}[Error]${RESET} Server not found"
+        exit
+    fi
+
+    IFS="|" read -r server_name username ip port <<< "$server_data"
+
+    echo -e "Connecting to $server_name..."
+
+    ssh -p "$port" "$username@$ip"
+
+    exit
+fi
+fi
+
+#COMMANDS COMMING SOON
+if [ "$1" = "remove" ]
+then 
+    echo "ghost remove: Coming soon (v1.1)"
+fi 
+
+if [ "$1" = "edit" ]
+then 
+    echo "ghost remove: Coming soon (v1.1)"
+fi
+
+if [ "$1" = "add" ]
+then
+
+printf "%b" "$YELLOW"
+cat << "EOF"
+
+        ██████╗ ██╗  ██╗ ██████╗ ███████╗████████╗    ███████╗███████╗██╗  ██╗
+       ██╔════╝ ██║  ██║██╔═══██╗██╔════╝╚══██╔══╝    ██╔════╝██╔════╝██║  ██║
+       ██║  ███╗███████║██║   ██║███████╗   ██║       ███████╗███████╗███████║
+       ██║   ██║██╔══██║██║   ██║╚════██║   ██║       ╚════██║╚════██║██╔══██║
+       ╚██████╔╝██║  ██║╚██████╔╝███████║   ██║       ███████║███████║██║  ██║
+        ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝       ╚══════╝╚══════╝╚═╝  ╚═╝
+                                                                            -by Honey                        
+EOF
+printf "%b" "$RESET"
+
+#MANUAL MODE
+
+read  -e -p "Enter your Server's Username : " username
+
+    while [ -z "$username" ]
+do
+    echo -e "${RED}[Error]${RESET} Username cannot be empty."
+    read -e -p "Enter your Server's Username : " username
+done
+
+#PORT NUMBERS
+
+while true 
+do  
+    read -e -p "Enter your Port [Default=22] :" port
+        if [ -z "$port" ]
+        then 
+            port=22
+            break
+        
+        elif [[ ! "$port" =~ ^[0-9]+$ ]]
+        then 
+            echo -e "${RED}[Error]${RESET} Port must contain only numbers. "
+        
+        else 
+            break
+        fi
+done
+
+#IP ADDRESS
+
+while true
+do     
+    read -e -p "Enter your HOST/IP :" ip
+    if [ -z "$ip" ]
+    then 
+        echo -e "${RED}[Error]${RESET} HOST/IP cannot be empty. "
+    else 
+        break
+    fi
+done
+
+#DETAILS.
+
+read -e -p "Enter Server Alias :" server_name
+
+if grep -m1 -q "^$server_name|" "$CONFIG_FILE"
+then
+    echo -e "${RED}[Error]${RESET} Alias already exists."
+    exit
+fi
+
+cat << EOF
+==========Details============
+    Username:$username
+    Port :$port
+    IP Address :$ip
+    Server Name :$server_name
+=============================    
+EOF
+
+#CONFIRMATION.
+
+while true
+do
+    read -e -p "Are these Credentials Correct (y/n):" confirm
+    if [ "$confirm" = "y" ]
+    then
+        echo -e "$server_name|$username|$ip|$port" >> "$CONFIG_FILE"
+        echo -e "Connecting to $server_name..."
+
+ssh -o ConnectTimeout=5 -p "$port" "$username@$ip"
+
+if [ $? -ne 0 ]
+then
+    echo -e "${RED}[Error]${RESET} Connection failed."
+fi
+
+exit
+        
+        break
+    elif [ "$confirm" = "n" ]
+    then
+        echo -e "Cancelled."
+        exit
+
+    else
+        echo -e "${RED}[Error]${RESET} Enter only y or n."
+    fi
+done
+fi
