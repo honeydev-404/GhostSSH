@@ -19,18 +19,11 @@ GhostSSH lets you save SSH connections with aliases and connect to them instantl
 
 ## Installation
 
-Clone the repository:
-
 ```bash
-git clone https://github.com/honeydev-404/GhostSSH.git
-cd GhostSSH
-```
-
-Install GhostSSH:
-
-```bash
-sudo cp ghost /usr/local/bin/ghost
-sudo chmod +x /usr/local/bin/ghost
+git clone https://github.com/honeydev-404/GhostSSH.git && \
+cd GhostSSH && \
+chmod +x install.sh && \
+./install.sh
 ```
 
 Verify installation:
