@@ -29,11 +29,15 @@ cd GhostSSH
 Install GhostSSH:
 
 ```bash
-cp ghost ~/.local/bin/ghost
-chmod +x ~/.local/bin/ghost
+sudo cp ghost /usr/local/bin/ghost
+sudo chmod +x /usr/local/bin/ghost
 ```
 
-Make sure `~/.local/bin` is included in your PATH.
+Verify installation:
+
+```bash
+ghost
+```
 
 ---
 
