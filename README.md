@@ -1,5 +1,5 @@
-<img width="637" height="640" alt="image" src="https://github.com/user-attachments/assets/da74cc29-f578-407c-add6-338fe6b6e6a5" />
-⚡️GhostSSH 
+<img width="200" height="200" align="center" alt="image" src="https://github.com/user-attachments/assets/da74cc29-f578-407c-add6-338fe6b6e6a5" />
+
 
 A lightweight SSH alias manager written in Bash.
 
