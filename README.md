@@ -14,13 +14,11 @@
   <img src="https://img.shields.io/github/license/honeydev-404/GhostSSH" alt="License">
 </p>
 
-
-A lightweight SSH alias manager written in Bash.
-
+<p align="center">
 GhostSSH lets you save SSH connections with aliases and connect to them instantly from the terminal.
+</p>
 
 ---
-
 ## Features
 
 * Save SSH connections with aliases
