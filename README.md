@@ -1,5 +1,18 @@
-<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/449c23df-61ce-4f74-81a1-b34b35ba8836" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/216752f4-d083-4fb0-821d-1411fad9d76f" width="180" alt="GhostSSH">
+</p>
 
+<h1 align="center">⚡️GhostSSH⚡️</h1>
+
+<p align="center">
+  A lightweight SSH alias manager written in Bash.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Bash-100%25-4EAA25?logo=gnu-bash&logoColor=white" alt="Bash">
+  <img src="https://img.shields.io/github/stars/honeydev-404/GhostSSH?style=flat&logo=github" alt="GitHub Stars">
+  <img src="https://img.shields.io/github/license/honeydev-404/GhostSSH" alt="License">
+</p>
 
 
 A lightweight SSH alias manager written in Bash.
@@ -140,5 +153,5 @@ Released under the MIT License.
 
 ---
 
-Created by Honey Bhardwaj.
+👾Created by Honey Bhardwaj👾
 
