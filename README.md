@@ -1,4 +1,5 @@
-<img width="200" height="200" align="center" alt="image" src="https://github.com/user-attachments/assets/da74cc29-f578-407c-add6-338fe6b6e6a5" />
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/449c23df-61ce-4f74-81a1-b34b35ba8836" />
+
 
 
 A lightweight SSH alias manager written in Bash.
