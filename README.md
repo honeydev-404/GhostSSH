@@ -75,26 +75,6 @@ ghost homelab
 
 ---
 
-## Example
-
-```bash
-ghost add
-ghost list
-ghost homelab
-ghost bandit0
-```
-
-Example output:
-
-```text
-Alias        Username     Host                           Port
---------------------------------------------------------------
-homelab      root         100.87.147.110                 22
-bandit0      bandit0      bandit.labs.overthewire.org    2220
-```
-
----
-
 ## Configuration
 
 Server information is stored in:
@@ -108,30 +88,6 @@ Format:
 ```text
 alias|username|host|port
 ```
-
-Example:
-
-```text
-homelab|root|100.87.147.110|22
-bandit0|bandit0|bandit.labs.overthewire.org|2220
-```
-
----
-
-## Roadmap
-
-### v1.1
-
-* ghost remove 
-* ghost edit 
-
-### Future Ideas
-
-* Import and export support
-* Connection history
-* Shell autocompletion
-* Server health checks
-
 ---
 
 ## Platform Support
