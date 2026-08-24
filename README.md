@@ -61,18 +61,6 @@ Add a server:
 ghost add
 ```
 
-List saved servers:
-
-```bash
-ghost list
-```
-
-Connect to a server:
-
-```bash
-ghost homelab
-```
-
 ---
 
 ## Configuration
@@ -81,12 +69,6 @@ Server information is stored in:
 
 ```text
 ~/.ghost/servers.conf
-```
-
-Format:
-
-```text
-alias|username|host|port
 ```
 ---
 
@@ -98,12 +80,6 @@ alias|username|host|port
 | macOS              | Yes       |
 | Windows (WSL)      | Yes       |
 | Windows (Git Bash) | Yes       |
-
----
-
-## License
-
-Released under the MIT License.
 
 ---
 
